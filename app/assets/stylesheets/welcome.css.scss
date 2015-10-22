@@ -1,0 +1,46 @@
+#background {
+  height: 100vh;
+  background-image: image-url("welcome_background.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  header {
+    color: $white;
+    padding: 3rem 0;
+    #logo {
+      float: left;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $white;
+      text-decoration: none;
+    }
+    nav {
+      float: right;
+      ul {
+        list-style: none;
+        margin: 0;
+        li {
+          display: inline;
+          margin-left: 2.5rem;
+          position: relative;
+          a {
+            color: $white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  h1 {
+    color: $white;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 7rem 0 2rem 0;
+  }
+  .button {
+    min-width: 130px;
+    display: inline-block;
+    margin: 1.5rem 2.5% 0 2.5%;
+  }
+}
