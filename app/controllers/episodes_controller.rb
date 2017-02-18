@@ -10,6 +10,7 @@ class EpisodesController < ApplicationController
 
 	def create
 		@episode = @podcast.episodes.new(episode_params)
+    @episode.slug = @episode.title.parameterize
 		if @episode.save
 			redirect_to podcast_episode_path(@podcast, @episode)
 		else
@@ -44,15 +45,15 @@ class EpisodesController < ApplicationController
 	end
 
 	def find_podcast
-		@podcast = Podcast.find(params[:podcast_id])
+		@podcast = Podcast.find_by_slug(params[:podcast_id])
 	end
 
 	def find_episode
-		@episode = Episode.find(params[:id])
+		@episode = Episode.find_by_slug(params[:id])
 	end
 
 	def require_permission
-		@podcast = Podcast.find(params[:podcast_id])
+		@podcast = Podcast.find_by_slug(params[:podcast_id])
 		if current_podcast != @podcast
 			redirect_to root_path, notice: "Sorry, you're not allowed to view that page"
 		end

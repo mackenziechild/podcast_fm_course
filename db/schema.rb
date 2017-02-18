@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023152323) do
+ActiveRecord::Schema.define(version: 20170218221830) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(version: 20151023152323) do
     t.string   "mp3_content_type"
     t.integer  "mp3_file_size"
     t.datetime "mp3_updated_at"
+    t.string   "slug"
   end
 
   add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
+  add_index "episodes", ["slug"], name: "index_episodes_on_slug"
 
   create_table "podcasts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -53,9 +55,11 @@ ActiveRecord::Schema.define(version: 20151023152323) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.string   "slug"
   end
 
   add_index "podcasts", ["email"], name: "index_podcasts_on_email", unique: true
   add_index "podcasts", ["reset_password_token"], name: "index_podcasts_on_reset_password_token", unique: true
+  add_index "podcasts", ["slug"], name: "index_podcasts_on_slug"
 
 end

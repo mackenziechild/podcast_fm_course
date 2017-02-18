@@ -22,7 +22,7 @@ class PodcastsController < ApplicationController
 		if params[:id].nil?
 			@podcast = current_podcast
 		else
-			@podcast = Podcast.find(params[:id])
+			@podcast = Podcast.find_by_slug(params[:id])
 		end
 	end
 end
