@@ -10,7 +10,6 @@ class EpisodesController < ApplicationController
 
 	def create
 		@episode = @podcast.episodes.new(episode_params)
-    @episode.slug = @episode.title.parameterize
 		if @episode.save
 			redirect_to podcast_episode_path(@podcast, @episode)
 		else
@@ -20,7 +19,8 @@ class EpisodesController < ApplicationController
 
 	def show
 		@episodes = Episode.where(podcast_id: @podcast).order("created_at DESC").limit(6).reject { |e| e.id == @episode.id }
-	end
+	  @episode.hit
+  end
 
 	def edit
 	end
