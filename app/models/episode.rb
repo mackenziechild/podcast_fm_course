@@ -31,4 +31,7 @@ class Episode < ActiveRecord::Base
   	update_attributes slug: generate_slug
   end
 
+  def others
+    podcast.episodes.where("id <> ?", id).order("created_at DESC").limit(6)
+  end
 end
