@@ -2,7 +2,7 @@ class Podcast < ActiveRecord::Base
 
 	after_create :update_slug
 	before_update :generate_slug
-	
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
